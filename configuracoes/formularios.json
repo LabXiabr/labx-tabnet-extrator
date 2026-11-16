@@ -1,0 +1,22 @@
+{
+  "sistemas": {
+    "SIA": {
+      "modalidades": {
+        "local_atendimento": [
+          {
+            "id": "sia_atendimento_1994_2007",
+            "inicio": 1994,
+            "fim": 2007,
+            "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/pabr.def"
+          },
+          {
+            "id": "sia_atendimento_2008_atual",
+            "inicio": 2008,
+            "fim": null,
+            "url": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/qabr.def"
+          }
+        ]
+      }
+    }
+  }
+}

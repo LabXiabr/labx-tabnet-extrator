@@ -1,0 +1,51 @@
+{
+  "tabuladores": [
+    {
+      "sistema": "SIA",
+      "subsistema": "AM",
+      "variavel": "Qtd.aprovada",
+      "filtros": {
+        "grupo_procedimento": ["06"]
+      }
+    },
+    {
+      "sistema": "SIA",
+      "subsistema": "AQ",
+      "variavel": "Qtd.aprovada",
+      "filtros": {
+        "forma_organizacao": [
+          "030402",
+          "030403",
+          "030404",
+          "030405",
+          "030406",
+          "030407",
+          "030408"
+        ]
+      }
+    },
+    {
+      "sistema": "SIA",
+      "subsistema": "AR",
+      "variavel": "Qtd.aprovada",
+      "filtros": {
+        "forma_organizacao": [
+          "030401",
+          "030409"
+        ]
+      }
+    },
+    {
+      "sistema": "SIA",
+      "subsistema": "PA",
+      "variavel": "Qtd.aprovada",
+      "filtros": {}
+    },
+    {
+      "sistema": "SIH",
+      "subsistema": "RD",
+      "variavel": "AIH aprovadas",
+      "filtros": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+.env.*
+referencias/
+dados/
+
+# Versoes antigas mantidas localmente
+src/**/*_antes_*.py
+src/**/*_v1.py
+src/*_antes_*.py
+src/*_v1.py

@@ -1,0 +1,29 @@
+{
+  "versao": 1,
+  "fontes": {
+    "SIA/AM": {
+      "descricao": "Producao Ambulatorial - Medicamentos",
+      "status": "validado_2008",
+      "formulario": "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/qabr.def",
+      "consulta": "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sia/cnv/qabr.def",
+      "inspecao_local": "dados/inspecao/formulario_sia_qabr.json",
+      "modelo_local": "dados/consultas/sia_am_200802.json",
+      "arquivo_prefixo": "qabr",
+      "arquivo_extensao": ".dbf",
+      "formato_competencia": "AAMM",
+      "inicio_validado": "2008-01",
+      "fim_validado": "2008-12",
+      "grupo_procedimento": "6",
+      "dimensoes": {
+        "linha": "Ano/mês_processamento",
+        "coluna": "UF",
+        "incremento": "Qtd.aprovada"
+      },
+      "campos_saida": [
+        "sg_uf",
+        "dt_competencia",
+        "qt_aprovada"
+      ]
+    }
+  }
+}
