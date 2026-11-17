@@ -10,7 +10,7 @@ from relatorio_qualidade import construir_relatorio
 
 
 def carregar_html(mes):
-    arquivo = RAIZ / "dados" / "respostas" / f"sia_am_{mes}.html"
+    arquivo = RAIZ / "tests" / "fixtures" / "dados" / "respostas" / f"sia_am_{mes}.html"
     return arquivo.read_bytes().decode("iso-8859-1")
 
 

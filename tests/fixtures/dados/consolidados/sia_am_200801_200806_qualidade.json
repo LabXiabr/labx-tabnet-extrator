@@ -1,0 +1,49 @@
+{
+  "inicio": "2008-01",
+  "fim": "2008-06",
+  "competencias": [
+    {
+      "competencia": "2008-01",
+      "registros": 27,
+      "total": 36088068,
+      "ufs_ausentes": []
+    },
+    {
+      "competencia": "2008-02",
+      "registros": 24,
+      "total": 39128252,
+      "ufs_ausentes": [
+        "MA",
+        "MT",
+        "SE"
+      ]
+    },
+    {
+      "competencia": "2008-03",
+      "registros": 27,
+      "total": 40399984,
+      "ufs_ausentes": []
+    },
+    {
+      "competencia": "2008-04",
+      "registros": 27,
+      "total": 42801848,
+      "ufs_ausentes": []
+    },
+    {
+      "competencia": "2008-05",
+      "registros": 27,
+      "total": 41814288,
+      "ufs_ausentes": []
+    },
+    {
+      "competencia": "2008-06",
+      "registros": 27,
+      "total": 45640253,
+      "ufs_ausentes": []
+    }
+  ],
+  "registros": 159,
+  "total_geral": 245872693,
+  "status": "consolidado_de_fontes_validadas"
+}

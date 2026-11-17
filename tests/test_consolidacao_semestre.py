@@ -4,7 +4,7 @@ from collections import Counter
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
-BASE = RAIZ / "dados/consolidados"
+BASE = RAIZ / "tests/fixtures/dados/consolidados"
 
 CSV = BASE / "sia_am_200801_200806.csv"
 QUALIDADE = BASE / "sia_am_200801_200806_qualidade.json"

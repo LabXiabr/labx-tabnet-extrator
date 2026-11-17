@@ -30,7 +30,7 @@ def test_monta_marco_2008():
 def test_equivalencia_com_consulta_validada():
     gerada = montar_consulta("SIA", "AM", "2008-03")
 
-    arquivo = RAIZ / "dados/consultas/sia_am_200803.json"
+    arquivo = RAIZ / "tests/fixtures/dados/consultas/sia_am_200803.json"
 
     original = json.loads(
         arquivo.read_text(encoding="utf-8")

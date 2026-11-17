@@ -1,0 +1,19 @@
+ Produção Ambulatorial do SUS - Brasil - por local de atendimento
+Qtd.aprovada por Ano/mês processamento e UF
+Grupo procedimento: 06 Medicamentos
+Período:Fev/2008
+"Ano/mês processamento";"RO";"AC";"AM";"RR";"PA";"AP";"TO";"PI";"CE";"RN";"PB";"PE";"AL";"BA";"MG";"ES";"RJ";"SP";"PR";"SC";"RS";"MS";"GO";"DF";"Total"
+"2008";80480;37806;107176;38020;224667;25951;143347;295591;1490660;1184949;503066;458608;281931;990970;4097078;1091333;1674755;18588989;2193884;2123193;1888867;345081;560906;700944;39128252
+"..Fevereiro/2008";80480;37806;107176;38020;224667;25951;143347;295591;1490660;1184949;503066;458608;281931;990970;4097078;1091333;1674755;18588989;2193884;2123193;1888867;345081;560906;700944;39128252
+"Total";80480;37806;107176;38020;224667;25951;143347;295591;1490660;1184949;503066;458608;281931;990970;4097078;1091333;1674755;18588989;2193884;2123193;1888867;345081;560906;700944;39128252
+ Fonte: Ministério da Saúde - Sistema de Informações Ambulatoriais do SUS (SIA/SUS)
+ Notas:
+ 
+ Dados referentes aos últimos seis meses, sujeitos a  atualização.
+ A partir do processamento de junho de 2012, houve mudança na classificação da natureza e esfera dos estabelecimentos. Com isso, temos que:
+      
+      Até maio de 2012 estas informações estão disponíveis como "Natureza" e "Esfera Administrativa".
+      De junho de 2012 a outubro de 2015, estão disponíveis tanto como "Natureza" e "Esfera Administrativa", como "Natureza Jurídica" e "Esfera Jurídica".
+      A partir de novembro de 2015, estão disponíveis como "Natureza Jurídica" e "Esfera Jurídica".
+      
+ 

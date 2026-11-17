@@ -1,7 +1,7 @@
 import csv
 from pathlib import Path
 
-ARQUIVO = Path("dados/saida/sia_am_200801.csv")
+ARQUIVO = Path("tests/fixtures/dados/saida/sia_am_200801.csv")
 
 
 def carregar_registros():

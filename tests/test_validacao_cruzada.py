@@ -14,10 +14,10 @@ from validar_csv_oficial import (
 
 OFICIAL = (
     RAIZ
-    / "dados/referencias_publicas/sia_am_200802_oficial.csv"
+    / "tests/fixtures/dados/referencias_publicas/sia_am_200802_oficial.csv"
 )
 
-EXTRAIDO = RAIZ / "dados/saida/sia_am_200802.csv"
+EXTRAIDO = RAIZ / "tests/fixtures/dados/saida/sia_am_200802.csv"
 
 
 def test_csv_oficial_fevereiro():

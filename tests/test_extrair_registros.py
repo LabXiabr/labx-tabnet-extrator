@@ -11,7 +11,7 @@ sys.path.insert(
 from normalizar_tabnet import extrair_registros
 
 
-BASE = Path("dados/respostas")
+BASE = Path("tests/fixtures/dados/respostas")
 
 
 def carregar_html(mes):
