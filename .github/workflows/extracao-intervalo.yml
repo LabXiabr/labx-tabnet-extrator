@@ -1,0 +1,103 @@
+name: Extracao por intervalo DATASUS
+
+on:
+  workflow_dispatch:
+    inputs:
+      inicio:
+        description: "Competencia inicial (AAAA-MM)"
+        required: true
+        default: "2009-04"
+        type: string
+      fim:
+        description: "Competencia final (AAAA-MM)"
+        required: true
+        default: "2009-06"
+        type: string
+      limite:
+        description: "Maximo de competencias"
+        required: true
+        default: "3"
+        type: choice
+        options:
+          - "1"
+          - "2"
+          - "3"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extracao-real-datasus
+  cancel-in-progress: false
+
+jobs:
+  intervalo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    env:
+      INICIO: ${{ inputs.inicio }}
+      FIM: ${{ inputs.fim }}
+      LIMITE: ${{ inputs.limite }}
+
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+
+      - name: Validar intervalo e limite
+        id: validar
+        run: |
+          python scripts/intervalo_github.py \
+            validar "$INICIO" "$FIM" "$LIMITE"
+
+      - name: Inicializar formulario DATASUS
+        run: python src/inicializar.py
+
+      - name: Planejar intervalo
+        run: |
+          python src/executar_intervalo.py \
+            --sistema SIA \
+            --subsistema AM \
+            --inicio "$INICIO" \
+            --fim "$FIM" \
+            --modo dinamico
+
+      - name: Extrair validar e consolidar
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python src/executar_intervalo.py \
+            --sistema SIA \
+            --subsistema AM \
+            --inicio "$INICIO" \
+            --fim "$FIM" \
+            --modo dinamico \
+            --executar \
+            --consolidar \
+            --limite "$LIMITE" < <(yes s)
+
+      - name: Resumir e preparar artefatos
+        id: organizar
+        if: ${{ always() && steps.validar.outcome == 'success' }}
+        run: |
+          python scripts/intervalo_github.py \
+            empacotar "$INICIO" "$FIM" "$LIMITE"
+
+      - name: Disponibilizar resultados aprovados
+        if: ${{ always() && steps.organizar.outputs.has_files == 'true' }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: resultado-sia-am-${{ inputs.inicio }}-a-${{ inputs.fim }}-${{ github.run_number }}
+          path: pacote/
+          retention-days: 7
+          if-no-files-found: error
+          compression-level: 6
