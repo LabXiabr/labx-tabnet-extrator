@@ -64,7 +64,14 @@ aprovado = all([
     qualidade["competencia"] == competencia,
     validacao["competencia"] == competencia,
     manifesto["competencia"] == competencia,
-    qualidade["status"] == "validado",
+    qualidade["status"] in (
+        "validado", "validado_com_ausencias"
+    ),
+    len(ufs) + len(qualidade["ufs_ausentes"]) == 27,
+    not (ufs & set(qualidade["ufs_ausentes"])),
+    (
+        qualidade["status"] == "validado"
+    ) == (len(qualidade["ufs_ausentes"]) == 0),
     qualidade["total_consistente"] is True,
     validacao["status"] == "aprovado",
     len(divergencias) == 0,
@@ -77,7 +84,12 @@ aprovado = all([
     verificados == 5,
 ])
 
-situacao = "APROVADA" if aprovado else "REVISAR"
+if not aprovado:
+    situacao = "REVISAR"
+elif qualidade["ufs_ausentes"]:
+    situacao = "VALIDADA COM RESSALVAS"
+else:
+    situacao = "APROVADA"
 
 resumo = f"""# Relatorio de extracao DATASUS
 

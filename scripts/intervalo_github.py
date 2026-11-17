@@ -128,6 +128,14 @@ def empacotar(meses):
             )
 
 
+    if len(aprovadas) != len(meses):
+        raise RuntimeError(
+            "Intervalo incompleto: "
+            f"{len(aprovadas)}/{len(meses)} "
+            "competencias empacotadas."
+        )
+
+
 def main():
     if len(sys.argv) != 5:
         raise SystemExit(
