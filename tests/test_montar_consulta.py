@@ -9,6 +9,84 @@ sys.path.insert(0, str(RAIZ / "src" / "core"))
 
 from montar_consulta import montar_consulta
 
+import montar_consulta as modulo_montagem
+import selecionar_fonte as modulo_fonte
+import validar_catalogo as modulo_catalogo
+
+
+@pytest.fixture(autouse=True)
+def ambiente_consulta_isolado(tmp_path, monkeypatch):
+    catalogo = json.loads(
+        (RAIZ / "configuracoes/fontes.json").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    fonte = catalogo["fontes"]["SIA/AM"]
+
+    fonte["inspecao_local"] = (
+        "dados/inspecao/formulario_sia_qabr.json"
+    )
+    fonte["modelo_local"] = (
+        "configuracoes/modelos/sia_am_base.json"
+    )
+
+    caminho_catalogo = (
+        tmp_path / "configuracoes/fontes.json"
+    )
+    caminho_catalogo.parent.mkdir(
+        parents=True, exist_ok=True
+    )
+    caminho_catalogo.write_text(
+        json.dumps(catalogo, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    modelo_original = (
+        RAIZ / "configuracoes/modelos/sia_am_base.json"
+    )
+    modelo_destino = (
+        tmp_path / fonte["modelo_local"]
+    )
+    modelo_destino.parent.mkdir(
+        parents=True, exist_ok=True
+    )
+    modelo_destino.write_bytes(
+        modelo_original.read_bytes()
+    )
+
+    formulario = {
+        "campos": [
+            {
+                "name": "Arquivos",
+                "opcoes": [
+                    {"value": "qabr0803.dbf"}
+                ],
+            }
+        ]
+    }
+
+    caminho_formulario = (
+        tmp_path / fonte["inspecao_local"]
+    )
+    caminho_formulario.parent.mkdir(
+        parents=True, exist_ok=True
+    )
+    caminho_formulario.write_text(
+        json.dumps(formulario),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(
+        modulo_montagem, "RAIZ", tmp_path
+    )
+    monkeypatch.setattr(
+        modulo_catalogo, "RAIZ", tmp_path
+    )
+    monkeypatch.setattr(
+        modulo_fonte, "CATALOGO", caminho_catalogo
+    )
+
 
 def parametros(consulta):
     return consulta["parametros"]
