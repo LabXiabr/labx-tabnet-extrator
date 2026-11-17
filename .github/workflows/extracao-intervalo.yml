@@ -59,7 +59,63 @@ jobs:
             validar "$INICIO" "$FIM" "$LIMITE"
 
       - name: Inicializar formulario DATASUS
-        run: python src/inicializar.py
+        id: inicializar
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for tentativa in 1 2; do
+            if python src/inicializar.py; then
+              echo "Formulario obtido do DATASUS."
+              exit 0
+            fi
+
+            echo "Tentativa $tentativa falhou."
+            if [ "$tentativa" -eq 1 ]; then
+              sleep 5
+            fi
+          done
+
+          echo "::warning::DATASUS indisponivel. Usando snapshot de 2009."
+
+          mkdir -p dados/inspecao
+
+          cp -n \
+            configuracoes/snapshots/sia_am_arquivos_2009.json \
+            dados/inspecao/formulario_sia_qabr.json
+
+          python - <<'CHECK'
+          import json
+          from pathlib import Path
+
+          arquivo = Path(
+              "dados/inspecao/formulario_sia_qabr.json"
+          )
+          dados = json.loads(arquivo.read_text(encoding="utf-8"))
+
+          campos = [
+              c for c in dados["campos"]
+              if c.get("name") == "Arquivos"
+          ]
+          if len(campos) != 1:
+              raise SystemExit("Snapshot invalido.")
+
+          valores = {
+              o["value"].lower()
+              for o in campos[0]["opcoes"]
+          }
+
+          esperados = {
+              f"qabr09{mes:02d}.dbf"
+              for mes in range(1, 13)
+          }
+
+          if not esperados.issubset(valores):
+              raise SystemExit("Competencias ausentes no snapshot.")
+
+          print("Snapshot verificado com sucesso.")
+          CHECK
+
 
       - name: Planejar intervalo
         run: |
@@ -87,7 +143,7 @@ jobs:
 
       - name: Resumir e preparar artefatos
         id: organizar
-        if: ${{ always() && steps.validar.outcome == 'success' }}
+        if: ${{ always() && steps.validar.outcome == 'success' && steps.inicializar.outcome == 'success' }}
         run: |
           python scripts/intervalo_github.py \
             empacotar "$INICIO" "$FIM" "$LIMITE"

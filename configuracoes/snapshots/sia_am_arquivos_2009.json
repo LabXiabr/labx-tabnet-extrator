@@ -1,0 +1,71 @@
+{
+  "origem": "https://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/qabr.def",
+  "escopo": "SIA/AM - competencias de 2009",
+  "campos": [
+    {
+      "name": "Arquivos",
+      "opcoes": [
+        {
+          "value": "qabr0912.dbf",
+          "texto": "Dez/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0911.dbf",
+          "texto": "Nov/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0910.dbf",
+          "texto": "Out/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0909.dbf",
+          "texto": "Set/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0908.dbf",
+          "texto": "Ago/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0907.dbf",
+          "texto": "Jul/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0906.dbf",
+          "texto": "Jun/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0905.dbf",
+          "texto": "Mai/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0904.dbf",
+          "texto": "Abr/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0903.dbf",
+          "texto": "Mar/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0902.dbf",
+          "texto": "Fev/2009",
+          "selected": false
+        },
+        {
+          "value": "qabr0901.dbf",
+          "texto": "Jan/2009",
+          "selected": false
+        }
+      ]
+    }
+  ]
+}
