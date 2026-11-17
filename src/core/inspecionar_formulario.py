@@ -83,6 +83,16 @@ def main():
     url = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_URL
     identificador = url.split("?")[-1].split("/")[-1].replace(".def", "")
 
+    destino = Path("dados/inspecao")
+    arquivo_saida = destino / (
+        f"formulario_sia_{identificador}.json"
+    )
+
+    if arquivo_saida.exists():
+        raise SystemExit(
+            f"Inspecao existente preservada: {arquivo_saida}"
+        )
+
     req = Request(url, headers={
         "User-Agent": "Mozilla/5.0"
     })
@@ -130,10 +140,13 @@ def main():
     }
 
     arquivo = destino / f"formulario_sia_{identificador}.json"
-    arquivo.write_text(
-        json.dumps(resultado, ensure_ascii=False, indent=2),
-        encoding="utf-8"
-    )
+    with arquivo.open("x", encoding="utf-8") as saida:
+        json.dump(
+            resultado,
+            saida,
+            ensure_ascii=False,
+            indent=2,
+        )
 
     print(f"\nResultado salvo em: {arquivo}")
 
