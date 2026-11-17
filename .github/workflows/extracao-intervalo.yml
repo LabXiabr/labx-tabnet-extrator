@@ -23,8 +23,15 @@ on:
           - "2"
           - "3"
 
+      execucao_origem:
+        description: "ID da execucao anterior (opcional)"
+        required: false
+        default: ""
+        type: string
+
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: extracao-real-datasus
@@ -57,6 +64,29 @@ jobs:
         run: |
           python scripts/intervalo_github.py \
             validar "$INICIO" "$FIM" "$LIMITE"
+
+      - name: Validar ID da execucao anterior
+        if: ${{ inputs.execucao_origem != '' }}
+        shell: bash
+        env:
+          RUN_ORIGEM: ${{ inputs.execucao_origem }}
+        run: |
+          [[ "$RUN_ORIGEM" =~ ^[0-9]+$ ]] || exit 1
+
+      - name: Baixar resultados anteriores
+        if: ${{ inputs.execucao_origem != '' }}
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ inputs.execucao_origem }}
+          pattern: resultado-sia-am-*
+          merge-multiple: true
+          path: recuperado
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restaurar competencias aprovadas
+        if: ${{ inputs.execucao_origem != '' }}
+        run: |
+          python scripts/restaurar_execucoes.py             "$INICIO" "$FIM"
 
       - name: Inicializar formulario DATASUS
         id: inicializar
