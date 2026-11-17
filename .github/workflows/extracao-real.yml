@@ -1,0 +1,96 @@
+name: Extracao real DATASUS
+
+on:
+  workflow_dispatch:
+    inputs:
+      competencia:
+        description: "Competencia de 2009 (AAAA-MM)"
+        required: true
+        default: "2009-04"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: extracao-real-datasus
+  cancel-in-progress: false
+
+jobs:
+  extracao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      COMPETENCIA: ${{ inputs.competencia }}
+
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+
+      - name: Validar competencia
+        shell: bash
+        run: |
+          if [[ ! "$COMPETENCIA" =~ ^2009-(0[1-9]|1[0-2])$ ]]; then
+            echo "Competencia invalida. Use um mes de 2009."
+            exit 1
+          fi
+
+      - name: Inicializar formulario
+        run: python src/inicializar.py
+
+      - name: Planejar consulta
+        run: |
+          python src/executar_intervalo.py \
+            --sistema SIA \
+            --subsistema AM \
+            --inicio "$COMPETENCIA" \
+            --fim "$COMPETENCIA" \
+            --modo dinamico
+
+      - name: Extrair e validar dados
+        shell: bash
+        run: |
+          set -o pipefail
+          printf 's\n' | python src/executar_intervalo.py \
+            --sistema SIA \
+            --subsistema AM \
+            --inicio "$COMPETENCIA" \
+            --fim "$COMPETENCIA" \
+            --modo dinamico \
+            --executar \
+            --limite 1
+
+      - name: Conferir resultados
+        shell: bash
+        run: |
+          MES="${COMPETENCIA//-/}"
+          PREFIXO="sia_am_${MES}"
+
+          test -f "dados/execucoes/$PREFIXO/normalizado.csv"
+          test -f "dados/execucoes/$PREFIXO/qualidade.json"
+          test -f "dados/execucoes/$PREFIXO/validacao_cruzada.json"
+          test -f "dados/execucoes/$PREFIXO/oficial.csv"
+          test -f "dados/auditoria/${PREFIXO}_manifesto.json"
+
+          echo "Arquivos de $COMPETENCIA encontrados."
+
+      - name: Disponibilizar resultados
+        uses: actions/upload-artifact@v6
+        with:
+          name: resultado-sia-am-${{ inputs.competencia }}-${{ github.run_number }}
+          path: |
+            dados/execucoes/
+            dados/auditoria/
+            dados/respostas/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
