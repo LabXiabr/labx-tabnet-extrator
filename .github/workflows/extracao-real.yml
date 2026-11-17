@@ -83,6 +83,9 @@ jobs:
 
           echo "Arquivos de $COMPETENCIA encontrados."
 
+      - name: Gerar resumo da execucao
+        run: python scripts/resumir_execucao.py "$COMPETENCIA"
+
       - name: Disponibilizar resultados
         uses: actions/upload-artifact@v6
         with:
