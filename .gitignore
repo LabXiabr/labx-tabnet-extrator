@@ -12,3 +12,9 @@ src/**/*_antes_*.py
 src/**/*_v1.py
 src/*_antes_*.py
 src/*_v1.py
+
+# Versoes antigas mantidas localmente
+src/**/*_antes_*.py
+src/**/*_v1.py
+src/*_antes_*.py
+src/*_v1.py

@@ -7,7 +7,7 @@
       "formulario": "http://tabnet.datasus.gov.br/cgi/deftohtm.exe?sia/cnv/qabr.def",
       "consulta": "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sia/cnv/qabr.def",
       "inspecao_local": "dados/inspecao/formulario_sia_qabr.json",
-      "modelo_local": "dados/consultas/sia_am_200802.json",
+      "modelo_local": "configuracoes/modelos/sia_am_base.json",
       "arquivo_prefixo": "qabr",
       "arquivo_extensao": ".dbf",
       "formato_competencia": "AAMM",
