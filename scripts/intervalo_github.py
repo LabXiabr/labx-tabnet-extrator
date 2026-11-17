@@ -100,12 +100,21 @@ def empacotar(meses):
             origem / f"{identificador}_qualidade.json",
         ]
 
-        if all(p.is_file() for p in consolidados):
-            destino = pacote / "consolidado"
-            destino.mkdir()
+        if not all(p.is_file() for p in consolidados):
+            raise RuntimeError(
+                "Intervalo aprovado, mas consolidado ausente."
+            )
 
-            for arquivo in consolidados:
-                shutil.copy2(arquivo, destino / arquivo.name)
+        shutil.copy2(
+            consolidados[0],
+            pacote / "consolidado.csv",
+        )
+        shutil.copy2(
+            consolidados[1],
+            pacote / "qualidade_consolidado.json",
+        )
+
+        print("CSV consolidado incluido no pacote.")
 
     print(
         f"\nPacotes aprovados: {len(aprovadas)}/{len(meses)}"
