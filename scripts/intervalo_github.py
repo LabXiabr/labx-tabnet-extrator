@@ -14,8 +14,8 @@ def competencias(inicio, fim, limite):
         raise ValueError("Fim deve ser um mes de 2009")
 
     limite = int(limite)
-    if not 1 <= limite <= 3:
-        raise ValueError("Limite permitido: 1 a 3")
+    if not 1 <= limite <= 12:
+        raise ValueError("Intervalo permitido: 1 a 12 meses")
 
     a = int(inicio[-2:])
     b = int(fim[-2:])
