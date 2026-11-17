@@ -71,7 +71,7 @@ jobs:
               "a",
               encoding="utf-8",
           ) as saida:
-              saida.write(f"LIMITE={quantidade}\\n")
+              saida.write("LIMITE=" + str(quantidade) + chr(10))
 
           print(f"Competencias calculadas: {quantidade}")
           CHECK
