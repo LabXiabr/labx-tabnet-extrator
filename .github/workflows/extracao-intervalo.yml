@@ -23,12 +23,6 @@ on:
           - "2"
           - "3"
 
-      execucao_origem:
-        description: "ID da execucao anterior (opcional)"
-        required: false
-        default: ""
-        type: string
-
 permissions:
   contents: read
   actions: read
@@ -65,26 +59,25 @@ jobs:
           python scripts/intervalo_github.py \
             validar "$INICIO" "$FIM" "$LIMITE"
 
-      - name: Validar ID da execucao anterior
-        if: ${{ inputs.execucao_origem != '' }}
-        shell: bash
+      - name: Localizar resultados anteriores
+        id: localizar
         env:
-          RUN_ORIGEM: ${{ inputs.execucao_origem }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          [[ "$RUN_ORIGEM" =~ ^[0-9]+$ ]] || exit 1
+          python scripts/localizar_artefato.py             "$INICIO" "$FIM"
 
       - name: Baixar resultados anteriores
-        if: ${{ inputs.execucao_origem != '' }}
+        if: ${{ steps.localizar.outputs.encontrado == 'true' }}
         uses: actions/download-artifact@v4
         with:
-          run-id: ${{ inputs.execucao_origem }}
+          run-id: ${{ steps.localizar.outputs.run_id }}
           pattern: resultado-sia-am-*
           merge-multiple: true
           path: recuperado
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Restaurar competencias aprovadas
-        if: ${{ inputs.execucao_origem != '' }}
+        if: ${{ steps.localizar.outputs.encontrado == 'true' }}
         run: |
           python scripts/restaurar_execucoes.py             "$INICIO" "$FIM"
 
