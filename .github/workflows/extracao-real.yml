@@ -86,14 +86,37 @@ jobs:
       - name: Gerar resumo da execucao
         run: python scripts/resumir_execucao.py "$COMPETENCIA"
 
+      - name: Preparar pacote simplificado
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          MES="${COMPETENCIA//-/}"
+          PREFIXO="sia_am_${MES}"
+
+          mkdir pacote
+
+          cp "dados/execucoes/$PREFIXO/normalizado.csv" pacote/
+          cp "dados/execucoes/$PREFIXO/oficial.csv" pacote/
+          cp "dados/execucoes/$PREFIXO/qualidade.json" pacote/
+          cp "dados/execucoes/$PREFIXO/validacao_cruzada.json" pacote/
+
+          cp "dados/auditoria/${PREFIXO}_manifesto.json" \
+            pacote/manifesto.json
+
+          cp "dados/respostas/${PREFIXO}.html" \
+            pacote/resposta_original.html
+
+          echo "=== ARQUIVOS DO PACOTE ==="
+          ls -lh pacote/
+
+          test "$(find pacote -maxdepth 1 -type f | wc -l)" -eq 6
+
       - name: Disponibilizar resultados
         uses: actions/upload-artifact@v6
         with:
           name: resultado-sia-am-${{ inputs.competencia }}-${{ github.run_number }}
-          path: |
-            dados/execucoes/
-            dados/auditoria/
-            dados/respostas/
+          path: pacote/
           if-no-files-found: error
           retention-days: 7
           compression-level: 6
