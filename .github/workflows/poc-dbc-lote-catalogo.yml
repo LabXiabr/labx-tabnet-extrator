@@ -1,9 +1,9 @@
-name: PoC DBC - extracao real Parquet
+name: DATASUS - baixar arquivos DBC
 on:
   workflow_dispatch:
     inputs:
       fonte:
-        description: 'Sistema / Subsistema (fontes compatíveis com o conversor)'
+        description: 'Sistema / Subsistema'
         type: choice
         required: true
         default: SIA/PA
@@ -14,40 +14,39 @@ on:
           - SIH/RD
         # FIM-FONTES-GERADAS
       competencia:
-        description: 'Ano completo: 2010 | Mês: 2010-04'
+        description: 'Ano inteiro (2010) ou mês (2010-04)'
         type: string
         required: true
         default: '2010-04'
 permissions:
   contents: read
 concurrency:
-  group: labx-parquet-${{ github.ref }}
+  group: labx-dbc-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   preparar:
-    name: Validar fonte e dividir o processamento
+    name: Validar fonte e preparar lotes
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
-      matriz: ${{ steps.preparar.outputs.matriz }}
+      matriz: ${{ steps.matriz.outputs.matriz }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Validar parâmetros e gerar lotes
-        id: preparar
+      - name: Validar opções e gerar matriz
+        id: matriz
         env:
           FONTE: ${{ inputs.fonte }}
           COMPETENCIA: ${{ inputs.competencia }}
         run: |
           set -euo pipefail
           python scripts/gerar_opcoes_workflow.py --check
-          python -m unittest discover -s tests -p test_extrair_parquet_actions.py -q
-          python scripts/extrair_parquet_actions.py --fonte "$FONTE" --competencia "$COMPETENCIA" --matriz > /tmp/matriz.json
+          python scripts/baixar_dbc_actions.py --fonte "$FONTE" --competencia "$COMPETENCIA" --matriz > /tmp/matriz.json
           echo "matriz=$(cat /tmp/matriz.json)" >> "$GITHUB_OUTPUT"
-          python -c 'import json; m=json.load(open("/tmp/matriz.json")); print("Lotes reais:", len(m["include"]))'
-  extrair:
+          python -c 'import json; print("Lotes:", len(json.load(open("/tmp/matriz.json"))["include"]))'
+  baixar:
     name: ${{ matrix.competencia }} / ${{ matrix.ufs }}
     needs: preparar
     runs-on: ubuntu-latest
@@ -61,30 +60,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Instalar dependências da PoC original
-        run: |
-          set -euo pipefail
-          test -f poc_dbc_online/requirements.txt || { echo 'ERRO: requirements.txt do robô original ausente'; exit 1; }
-          python -m pip install -r poc_dbc_online/requirements.txt
-          python -m pip install dbc-to-dbf
-          python -c 'import duckdb, dbfread, dbctodbf; print("Dependências para conversão disponíveis")'
-      - name: Baixar DBC e converter para Parquet
+      - name: Baixar DBCs do DATASUS e calcular hash SHA-256
         env:
           FONTE: ${{ inputs.fonte }}
-          MES: ${{ matrix.competencia }}
+          COMPETENCIA: ${{ matrix.competencia }}
           UFS: ${{ matrix.ufs }}
         run: |
           set -euo pipefail
-          python scripts/extrair_parquet_actions.py --fonte "$FONTE" --competencia "$MES" --ufs "$UFS" --saida poc_dbc_online/saidas/real
-      - name: Publicar Parquets e manifestos deste lote
+          python scripts/baixar_dbc_actions.py --fonte "$FONTE" --competencia "$COMPETENCIA" --ufs "$UFS"
+      - name: Disponibilizar DBCs originais e manifestos
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: parquet-${{ matrix.competencia }}-${{ matrix.ufs }}-${{ github.run_id }}
+          name: dbc-${{ matrix.competencia }}-${{ matrix.ufs }}-${{ github.run_id }}
           path: |
-            poc_dbc_online/saidas/real/**/*.parquet
-            poc_dbc_online/saidas/real/**/manifesto.json
-            poc_dbc_online/saidas/real/resumo_lote.json
-          if-no-files-found: warn
+            poc_dbc_online/saidas/dbc/**/*.dbc
+            poc_dbc_online/saidas/dbc/**/manifesto.json
+            poc_dbc_online/saidas/dbc/**/resumo_lote.json
+          if-no-files-found: error
           retention-days: 7
           compression-level: 0
