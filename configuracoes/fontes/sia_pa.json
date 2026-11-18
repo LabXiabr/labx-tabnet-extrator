@@ -1,0 +1,12 @@
+{
+  "id": "sia_pa",
+  "sistema": "SIA",
+  "subsistema": "PA",
+  "descricao": "Producao ambulatorial - proposta de segunda fonte",
+  "status": "planejada",
+  "url_formulario": null,
+  "granularidade": "a_definir",
+  "indicadores": [],
+  "dimensoes": [],
+  "observacoes": "Necessita inspecao real do formulario, selecao de parametros, extracao de teste e validacao independente. Nao habilitar antes da homologacao."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sia_am",
+  "sistema": "SIA",
+  "subsistema": "AM",
+  "descricao": "Producao ambulatorial de medicamentos, grupo de procedimento 06 (configuracao MVP)",
+  "status": "homologada",
+  "url_formulario": "http://tabnet.datasus.gov.br/cgi/tabcgi.exe?sia/cnv/qabr.def",
+  "granularidade": "competencia_mes_uf",
+  "indicadores": ["qt_aprovada"],
+  "dimensoes": ["sg_uf", "dt_competencia"],
+  "observacoes": "Homologacao restrita ao grupo 06 e as competencias efetivamente testadas; nao implica cobertura de todos os anos."
+}
