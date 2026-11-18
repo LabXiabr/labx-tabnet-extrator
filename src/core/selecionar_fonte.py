@@ -37,6 +37,27 @@ def selecionar_fonte(sistema, subsistema):
             f"Disponiveis: {disponiveis}"
         )
 
+    # Verifica tambem o catalogo de metadados.
+    import sys
+    if str(RAIZ) not in sys.path:
+        sys.path.insert(0, str(RAIZ))
+
+    from src.catalogo.fontes import obter_fonte
+
+    metadados = obter_fonte(sistema, subsistema)
+
+    if metadados.status != "homologada":
+        raise ValueError(
+            f"Fonte ainda nao homologada: {identificador}"
+        )
+
+    if set(fonte["campos_saida"]) != set(
+        metadados.indicadores + metadados.dimensoes
+    ):
+        raise ValueError(
+            f"Campos divergentes entre catalogos: {identificador}"
+        )
+
     return fonte
 
 
