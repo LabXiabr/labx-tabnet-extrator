@@ -77,6 +77,6 @@ jobs:
             poc_dbc_online/saidas/dbc/**/*.dbc
             poc_dbc_online/saidas/dbc/**/manifesto.json
             poc_dbc_online/saidas/dbc/**/resumo_lote.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
           compression-level: 0

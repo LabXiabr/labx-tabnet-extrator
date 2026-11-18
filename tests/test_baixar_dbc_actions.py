@@ -1,5 +1,6 @@
 import importlib.util
 import tempfile
+import ftplib
 import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
@@ -36,6 +37,25 @@ class TestDownloadDBC(unittest.TestCase):
             with self.assertRaises(OSError): m.baixar(ftp, arq.name, arq)
             self.assertFalse(arq.exists())
             self.assertFalse((Path(tmp) / 'PAAC1004.dbc.part').exists())
+
+    def test_fechar_conexao_quebrada(self):
+        ftp = MagicMock()
+        ftp.close.return_value = None
+        ftp.quit.side_effect = AttributeError('sem socket')
+        m.fechar(ftp)
+        ftp.close.assert_called_once()
+        ftp.quit.assert_not_called()
+
+    def test_conectar_reconecta_apos_timeout(self):
+        erro = TimeoutError('timed out')
+        primeiro, segundo = MagicMock(), MagicMock()
+        primeiro.connect.side_effect = erro
+        segundo.nlst.return_value = ['PAAC1004.dbc']
+        with patch.object(m.ftplib, 'FTP', side_effect=[primeiro, segundo]), patch.object(m.time, 'sleep'):
+            ftp, nomes = m.conectar('/teste')
+        self.assertIs(ftp, segundo)
+        self.assertEqual(nomes, ['PAAC1004.dbc'])
+        primeiro.close.assert_called_once()
 
     def test_matriz_reutilizada(self):
         with patch.object(m, 'matriz', return_value={'include': []}):
