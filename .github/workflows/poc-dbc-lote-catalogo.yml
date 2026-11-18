@@ -1,85 +1,90 @@
-name: PoC DBC - catalogo e lote
+name: PoC DBC - extracao real Parquet
 on:
   workflow_dispatch:
     inputs:
       fonte:
-        description: 'Sistema / Subsistema (selecione uma fonte mapeada)'
-        required: true
+        description: 'Sistema / Subsistema (fontes compatíveis com o conversor)'
         type: choice
+        required: true
         default: SIA/PA
         options:
         # INICIO-FONTES-GERADAS
-          - CIH/CR
-          - CIHA/CI
-          - CNES/DC
-          - CNES/EE
-          - CNES/EF
-          - CNES/EP
-          - CNES/EQ
-          - CNES/GM
-          - CNES/HB
-          - CNES/IN
-          - CNES/LT
-          - CNES/PF
-          - CNES/RC
-          - CNES/SR
-          - CNES/ST
-          - SIA/AB
-          - SIA/ABO
-          - SIA/ACF
-          - SIA/AD
           - SIA/AM
-          - SIA/AN
-          - SIA/AQ
-          - SIA/AR
-          - SIA/ATD
-          - SIA/BI
           - SIA/PA
-          - SIA/PS
-          - SIA/SAD
-          - SIH/ER
           - SIH/RD
-          - SIH/RJ
-          - SIH/SP
-          - SINASC/DN
-          - SINASC/DNR
-          - SISPRENATAL/PN
         # FIM-FONTES-GERADAS
       competencia:
-        description: 'Ano completo: 2010 | Um mes: 2010-04'
-        required: true
+        description: 'Ano completo: 2010 | Mês: 2010-04'
         type: string
-        default: '2010'
+        required: true
+        default: '2010-04'
 permissions:
   contents: read
 concurrency:
-  group: poc-dbc-lote-${{ github.ref }}
+  group: labx-parquet-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  lote:
+  preparar:
+    name: Validar fonte e dividir o processamento
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 10
+    outputs:
+      matriz: ${{ steps.preparar.outputs.matriz }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Conferir catalogo e formulario
-        run: |
-          python scripts/gerar_opcoes_workflow.py --check
-          python -m unittest discover -s tests -p test_lote_dbc.py -v
-      - name: Consultar arquivos do DATASUS (somente descoberta)
+      - name: Validar parâmetros e gerar lotes
+        id: preparar
         env:
           FONTE: ${{ inputs.fonte }}
           COMPETENCIA: ${{ inputs.competencia }}
         run: |
           set -euo pipefail
-          python scripts/lote_dbc.py --fonte "$FONTE" --competencia "$COMPETENCIA"
-      - name: Salvar plano de descoberta
+          python scripts/gerar_opcoes_workflow.py --check
+          python -m unittest discover -s tests -p test_extrair_parquet_actions.py -q
+          python scripts/extrair_parquet_actions.py --fonte "$FONTE" --competencia "$COMPETENCIA" --matriz > /tmp/matriz.json
+          echo "matriz=$(cat /tmp/matriz.json)" >> "$GITHUB_OUTPUT"
+          python -c 'import json; m=json.load(open("/tmp/matriz.json")); print("Lotes reais:", len(m["include"]))'
+  extrair:
+    name: ${{ matrix.competencia }} / ${{ matrix.ufs }}
+    needs: preparar
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJSON(needs.preparar.outputs.matriz) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependências da PoC original
+        run: |
+          set -euo pipefail
+          test -f poc_dbc_online/requirements.txt || { echo 'ERRO: requirements.txt do robô original ausente'; exit 1; }
+          python -m pip install -r poc_dbc_online/requirements.txt
+          python -m pip install dbc-to-dbf
+          python -c 'import duckdb, dbfread, dbctodbf; print("Dependências para conversão disponíveis")'
+      - name: Baixar DBC e converter para Parquet
+        env:
+          FONTE: ${{ inputs.fonte }}
+          MES: ${{ matrix.competencia }}
+          UFS: ${{ matrix.ufs }}
+        run: |
+          set -euo pipefail
+          python scripts/extrair_parquet_actions.py --fonte "$FONTE" --competencia "$MES" --ufs "$UFS" --saida poc_dbc_online/saidas/real
+      - name: Publicar Parquets e manifestos deste lote
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: plano-datasus-${{ github.run_id }}
-          path: poc_dbc_online/saidas/plano_lote.json
+          name: parquet-${{ matrix.competencia }}-${{ matrix.ufs }}-${{ github.run_id }}
+          path: |
+            poc_dbc_online/saidas/real/**/*.parquet
+            poc_dbc_online/saidas/real/**/manifesto.json
+            poc_dbc_online/saidas/real/resumo_lote.json
           if-no-files-found: warn
           retention-days: 7
+          compression-level: 0
