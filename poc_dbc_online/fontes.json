@@ -1,0 +1,9 @@
+{
+  "versao": 1,
+  "fontes": [
+    {"sistema":"SIA","subsistema":"PA","status":"piloto","diretorio_ftp":"/dissemin/publicos/SIASUS/200801_/Dados","prefixo":"PA","inicio":"2008-01"},
+    {"sistema":"SIA","subsistema":"AM","status":"experimental","diretorio_ftp":"/dissemin/publicos/SIASUS/200801_/Dados","prefixo":"AM","inicio":"2008-01"},
+    {"sistema":"SIH","subsistema":"RD","status":"experimental","diretorio_ftp":"/dissemin/publicos/SIHSUS/200801_/Dados","prefixo":"RD","inicio":"2008-01"},
+    {"sistema":"SIM","subsistema":"DO","status":"planejada","diretorio_ftp":null,"prefixo":null,"inicio":null}
+  ]
+}

@@ -1,0 +1,63 @@
+name: PoC DBC online para Parquet (DATASUS)
+
+on:
+  workflow_dispatch:
+    inputs:
+      sistema:
+        description: Sistema
+        type: choice
+        options: [SIA, SIH]
+        default: SIA
+        required: true
+      subsistema:
+        description: Subsistema (SIA PA/AM, SIH RD)
+        type: choice
+        options: [PA, AM, RD]
+        default: PA
+        required: true
+      uf:
+        description: UF (2 letras)
+        type: string
+        default: AC
+        required: true
+      competencia:
+        description: Competencia AAAA-MM
+        type: string
+        default: '2009-04'
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  converter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependencias da PoC
+        run: python -m pip install -r poc_dbc_online/requirements.txt
+      - name: Executar testes isolados
+        run: python -m unittest discover -s poc_dbc_online/tests -v
+      - name: Consultar DATASUS e converter DBC real
+        env:
+          SISTEMA: ${{ inputs.sistema }}
+          SUBSISTEMA: ${{ inputs.subsistema }}
+          UF: ${{ inputs.uf }}
+          COMPETENCIA: ${{ inputs.competencia }}
+        run: |
+          python -m poc_dbc_online.robo \
+            --sistema "$SISTEMA" --subsistema "$SUBSISTEMA" \
+            --uf "$UF" --competencia "$COMPETENCIA" \
+            --saida poc_dbc_online/saidas --max-mb 80
+      - name: Publicar Parquet e manifesto para auditoria
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poc-dbc-online-${{ github.run_id }}
+          path: poc_dbc_online/saidas/
+          retention-days: 3
+          if-no-files-found: error
