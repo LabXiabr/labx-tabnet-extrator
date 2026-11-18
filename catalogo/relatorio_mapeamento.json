@@ -1,0 +1,27 @@
+{
+  "total_fontes": 82,
+  "sistemas": {
+    "CIH": 2,
+    "CIHA": 2,
+    "CNES": 13,
+    "PNI": 2,
+    "SIA": 15,
+    "SIH": 6,
+    "SIM": 9,
+    "SINAN": 27,
+    "SINASC": 3,
+    "SISAB": 2,
+    "SISPRENATAL": 1
+  },
+  "com_diretorio": 41,
+  "sem_diretorio": 41,
+  "revisao_necessaria": [
+    "SIM/DO",
+    "SIM/DOEXT",
+    "SIM/DOFET",
+    "SIM/DOINF",
+    "SIM/DOMAT",
+    "SINASC/DNRIG"
+  ],
+  "observacao": "Fonte planilha; condições de publicação online não verificadas."
+}

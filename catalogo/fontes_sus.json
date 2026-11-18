@@ -1,0 +1,1499 @@
+{
+  "schema_version": 1,
+  "origem": {
+    "arquivo": "dicionario_mapaDadosAbertosSUS2025-02-12 (1).xlsx",
+    "aba": "subsistema",
+    "observacao": "Catálogo extraído da planilha, não comprovação de disponibilidade online ou homologação."
+  },
+  "fontes": {
+    "CIH/CR": {
+      "sistema": "CIH",
+      "subsistema": "CR",
+      "nome": "Sistema de Comunicação de Informação Hospitalar",
+      "variantes_origem": [
+        "CIH"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CIH/200801_201012/Dados/",
+          "linha_planilha": 84
+        }
+      ],
+      "origem_linhas": [
+        2,
+        84
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CIH/DAD": {
+      "sistema": "CIH",
+      "subsistema": "DAD",
+      "nome": "",
+      "variantes_origem": [
+        "CIH"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        3
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CIHA/CI": {
+      "sistema": "CIHA",
+      "subsistema": "CI",
+      "nome": "Sistema de Comunicação de Informação Hospitalar e Ambulatorial",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CIHA/201101_/Dados/",
+          "linha_planilha": 85
+        }
+      ],
+      "origem_linhas": [
+        85
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CIHA/CIHA": {
+      "sistema": "CIHA",
+      "subsistema": "CIHA",
+      "nome": "Sistema de Comunicação de Informação Hospitalar e Ambulatorial",
+      "variantes_origem": [
+        "CIHA"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        4
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/DC": {
+      "sistema": "CNES",
+      "subsistema": "DC",
+      "nome": "Dados Complementares",
+      "variantes_origem": [
+        "CNES_DC"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/DC",
+          "linha_planilha": 86
+        }
+      ],
+      "origem_linhas": [
+        5,
+        86
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/EE": {
+      "sistema": "CNES",
+      "subsistema": "EE",
+      "nome": "Estabelecimento de Ensino",
+      "variantes_origem": [
+        "CNES_EE"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EE",
+          "linha_planilha": 87
+        }
+      ],
+      "origem_linhas": [
+        6,
+        87
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/EF": {
+      "sistema": "CNES",
+      "subsistema": "EF",
+      "nome": "Estabelecimento Filantrópico",
+      "variantes_origem": [
+        "CNES_EF"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EF",
+          "linha_planilha": 88
+        }
+      ],
+      "origem_linhas": [
+        7,
+        88
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/EP": {
+      "sistema": "CNES",
+      "subsistema": "EP",
+      "nome": "Equipes",
+      "variantes_origem": [
+        "CNES_EP"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EP",
+          "linha_planilha": 89
+        }
+      ],
+      "origem_linhas": [
+        8,
+        89
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/EQ": {
+      "sistema": "CNES",
+      "subsistema": "EQ",
+      "nome": "Equipamentos",
+      "variantes_origem": [
+        "CNES_EQ"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EQ",
+          "linha_planilha": 90
+        }
+      ],
+      "origem_linhas": [
+        9,
+        90
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/GM": {
+      "sistema": "CNES",
+      "subsistema": "GM",
+      "nome": "Gestão e Metas",
+      "variantes_origem": [
+        "CNES_GM"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/GM",
+          "linha_planilha": 91
+        }
+      ],
+      "origem_linhas": [
+        10,
+        91
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/HB": {
+      "sistema": "CNES",
+      "subsistema": "HB",
+      "nome": "Habilitação",
+      "variantes_origem": [
+        "CNES_HB"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/HB",
+          "linha_planilha": 92
+        }
+      ],
+      "origem_linhas": [
+        11,
+        92
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/IN": {
+      "sistema": "CNES",
+      "subsistema": "IN",
+      "nome": "Incentivos",
+      "variantes_origem": [
+        "CNES_IN"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/IN",
+          "linha_planilha": 93
+        }
+      ],
+      "origem_linhas": [
+        12,
+        93
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/LT": {
+      "sistema": "CNES",
+      "subsistema": "LT",
+      "nome": "Leitos",
+      "variantes_origem": [
+        "CNES_LT"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/LT",
+          "linha_planilha": 94
+        }
+      ],
+      "origem_linhas": [
+        13,
+        94
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/PF": {
+      "sistema": "CNES",
+      "subsistema": "PF",
+      "nome": "Profissional",
+      "variantes_origem": [
+        "CNES_PF"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/PF",
+          "linha_planilha": 95
+        }
+      ],
+      "origem_linhas": [
+        14,
+        95
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/RC": {
+      "sistema": "CNES",
+      "subsistema": "RC",
+      "nome": "Regra Contratual",
+      "variantes_origem": [
+        "CNES_RC"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/RC",
+          "linha_planilha": 96
+        }
+      ],
+      "origem_linhas": [
+        15,
+        96
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/SR": {
+      "sistema": "CNES",
+      "subsistema": "SR",
+      "nome": "Serviço Especializado",
+      "variantes_origem": [
+        "CNES_SR"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/SR",
+          "linha_planilha": 97
+        }
+      ],
+      "origem_linhas": [
+        16,
+        97
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "CNES/ST": {
+      "sistema": "CNES",
+      "subsistema": "ST",
+      "nome": "Estabelecimentos",
+      "variantes_origem": [
+        "CNES_ST"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/ST",
+          "linha_planilha": 98
+        }
+      ],
+      "origem_linhas": [
+        17,
+        98
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "PNI/CPNI": {
+      "sistema": "PNI",
+      "subsistema": "CPNI",
+      "nome": "",
+      "variantes_origem": [
+        "PNI"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        18
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "PNI/DPNI": {
+      "sistema": "PNI",
+      "subsistema": "DPNI",
+      "nome": "",
+      "variantes_origem": [
+        "PNI"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        19
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AB": {
+      "sistema": "SIA",
+      "subsistema": "AB",
+      "nome": "Laudo de Acompanhamento à Cirurgia Bariátrica",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 100
+        }
+      ],
+      "origem_linhas": [
+        21,
+        100
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/ABO": {
+      "sistema": "SIA",
+      "subsistema": "ABO",
+      "nome": "Acompanhamento Pós Cirurgia Bariátrica",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 99
+        }
+      ],
+      "origem_linhas": [
+        22,
+        99
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/ACF": {
+      "sistema": "SIA",
+      "subsistema": "ACF",
+      "nome": "Laudo de Confecção de Fístula",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 101
+        }
+      ],
+      "origem_linhas": [
+        23,
+        101
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AD": {
+      "sistema": "SIA",
+      "subsistema": "AD",
+      "nome": "Laudos Diversos",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 102
+        }
+      ],
+      "origem_linhas": [
+        24,
+        102
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AM": {
+      "sistema": "SIA",
+      "subsistema": "AM",
+      "nome": "Laudo de Medicamentos",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 103
+        }
+      ],
+      "origem_linhas": [
+        25,
+        103
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AMP": {
+      "sistema": "SIA",
+      "subsistema": "AMP",
+      "nome": "Laudo de Acompanhamento Multiprofissional",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        26
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AN": {
+      "sistema": "SIA",
+      "subsistema": "AN",
+      "nome": "Laudo de Nefrologia",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 104
+        }
+      ],
+      "origem_linhas": [
+        27,
+        104
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AQ": {
+      "sistema": "SIA",
+      "subsistema": "AQ",
+      "nome": "Laudo de Quimioterapia",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 105
+        }
+      ],
+      "origem_linhas": [
+        28,
+        105
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/AR": {
+      "sistema": "SIA",
+      "subsistema": "AR",
+      "nome": "Laudo de Radioterapia",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 106
+        }
+      ],
+      "origem_linhas": [
+        29,
+        106
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/ATD": {
+      "sistema": "SIA",
+      "subsistema": "ATD",
+      "nome": "Laudo de Tratamento Dialítico",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 107
+        }
+      ],
+      "origem_linhas": [
+        30,
+        107
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/BI": {
+      "sistema": "SIA",
+      "subsistema": "BI",
+      "nome": "Boletim Individual",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 108
+        }
+      ],
+      "origem_linhas": [
+        31,
+        108
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/IMPBO": {
+      "sistema": "SIA",
+      "subsistema": "IMPBO",
+      "nome": "",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        32
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/PA": {
+      "sistema": "SIA",
+      "subsistema": "PA",
+      "nome": "Produção Ambulatorial",
+      "variantes_origem": [
+        "SIA1",
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/199407_200712/Dados/",
+          "linha_planilha": 109
+        },
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 110
+        }
+      ],
+      "origem_linhas": [
+        20,
+        33,
+        109,
+        110
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false,
+      "observacao": "Há mais de um diretório, variando por período; verificar competência antes de baixar."
+    },
+    "SIA/PS": {
+      "sistema": "SIA",
+      "subsistema": "PS",
+      "nome": "Psicossocial",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 111
+        }
+      ],
+      "origem_linhas": [
+        34,
+        111
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIA/SAD": {
+      "sistema": "SIA",
+      "subsistema": "SAD",
+      "nome": "Atenção Domiciliar",
+      "variantes_origem": [
+        "SIA2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/",
+          "linha_planilha": 112
+        }
+      ],
+      "origem_linhas": [
+        35,
+        112
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/CH": {
+      "sistema": "SIH",
+      "subsistema": "CH",
+      "nome": "",
+      "variantes_origem": [
+        "SIH2"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        39
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/CM": {
+      "sistema": "SIH",
+      "subsistema": "CM",
+      "nome": "",
+      "variantes_origem": [
+        "SIH2"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        40
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/ER": {
+      "sistema": "SIH",
+      "subsistema": "ER",
+      "nome": "Rejeitadas com Código de Erro",
+      "variantes_origem": [
+        "SIH2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+          "linha_planilha": 113
+        }
+      ],
+      "origem_linhas": [
+        41,
+        113
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/RD": {
+      "sistema": "SIH",
+      "subsistema": "RD",
+      "nome": "Reduzido de AIH",
+      "variantes_origem": [
+        "SIH1",
+        "SIH2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/",
+          "linha_planilha": 114
+        },
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+          "linha_planilha": 115
+        }
+      ],
+      "origem_linhas": [
+        36,
+        42,
+        114,
+        115
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/RJ": {
+      "sistema": "SIH",
+      "subsistema": "RJ",
+      "nome": "AIH rejeitada",
+      "variantes_origem": [
+        "SIH1",
+        "SIH2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/",
+          "linha_planilha": 116
+        },
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+          "linha_planilha": 117
+        }
+      ],
+      "origem_linhas": [
+        37,
+        43,
+        116,
+        117
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIH/SP": {
+      "sistema": "SIH",
+      "subsistema": "SP",
+      "nome": "Serviços Profissionais",
+      "variantes_origem": [
+        "SIH1",
+        "SIH2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/",
+          "linha_planilha": 118
+        },
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/",
+          "linha_planilha": 119
+        }
+      ],
+      "origem_linhas": [
+        38,
+        44,
+        118,
+        119
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIM/DO": {
+      "sistema": "SIM",
+      "subsistema": "DO",
+      "nome": "Declarações de Óbitos",
+      "variantes_origem": [
+        "SIM2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DORES/",
+          "linha_planilha": 120
+        }
+      ],
+      "origem_linhas": [
+        49,
+        120
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true,
+      "observacao": "Conferir URL/prefixo e regras específicas SIM antes de executar; há divergências aparentes na planilha."
+    },
+    "SIM/DOE": {
+      "sistema": "SIM",
+      "subsistema": "DOE",
+      "nome": "Declarações de Óbitos por causas externas",
+      "variantes_origem": [
+        "SIM1"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        45
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIM/DOEXT": {
+      "sistema": "SIM",
+      "subsistema": "DOEXT",
+      "nome": "Declarações de Óbitos por causas externas",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/",
+          "linha_planilha": 121
+        }
+      ],
+      "origem_linhas": [
+        121
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true,
+      "observacao": "Conferir URL/prefixo e regras específicas SIM antes de executar; há divergências aparentes na planilha."
+    },
+    "SIM/DOF": {
+      "sistema": "SIM",
+      "subsistema": "DOF",
+      "nome": "Declarações de Óbitos Fetais",
+      "variantes_origem": [
+        "SIM1"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        46
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIM/DOFET": {
+      "sistema": "SIM",
+      "subsistema": "DOFET",
+      "nome": "Declarações de Óbitos Fetais",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/",
+          "linha_planilha": 122
+        }
+      ],
+      "origem_linhas": [
+        122
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true,
+      "observacao": "Conferir URL/prefixo e regras específicas SIM antes de executar; há divergências aparentes na planilha."
+    },
+    "SIM/DOI": {
+      "sistema": "SIM",
+      "subsistema": "DOI",
+      "nome": "Declarações de Óbitos infantis",
+      "variantes_origem": [
+        "SIM1"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        47
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIM/DOINF": {
+      "sistema": "SIM",
+      "subsistema": "DOINF",
+      "nome": "Declarações de Óbitos infantis",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/",
+          "linha_planilha": 123
+        }
+      ],
+      "origem_linhas": [
+        123
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true,
+      "observacao": "Conferir URL/prefixo e regras específicas SIM antes de executar; há divergências aparentes na planilha."
+    },
+    "SIM/DOM": {
+      "sistema": "SIM",
+      "subsistema": "DOM",
+      "nome": "Declarações de Óbitos maternos",
+      "variantes_origem": [
+        "SIM1"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        48
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SIM/DOMAT": {
+      "sistema": "SIM",
+      "subsistema": "DOMAT",
+      "nome": "Declarações de Óbitos maternos",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/",
+          "linha_planilha": 124
+        }
+      ],
+      "origem_linhas": [
+        124
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true,
+      "observacao": "Conferir URL/prefixo e regras específicas SIM antes de executar; há divergências aparentes na planilha."
+    },
+    "SINAN/ANIM": {
+      "sistema": "SINAN",
+      "subsistema": "ANIM",
+      "nome": "Animais Peçonhentos",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        50
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/BOTU": {
+      "sistema": "SINAN",
+      "subsistema": "BOTU",
+      "nome": "Botulismo",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        51
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/CHAG": {
+      "sistema": "SINAN",
+      "subsistema": "CHAG",
+      "nome": "Doença de Chagas",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        52
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/COLE": {
+      "sistema": "SINAN",
+      "subsistema": "COLE",
+      "nome": "Cólera",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        53
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/COQU": {
+      "sistema": "SINAN",
+      "subsistema": "COQU",
+      "nome": "Coqueluche",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        54
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/DENG": {
+      "sistema": "SINAN",
+      "subsistema": "DENG",
+      "nome": "Dengue e Chikungunya",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        55
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/DIFT": {
+      "sistema": "SINAN",
+      "subsistema": "DIFT",
+      "nome": "Difteria",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        56
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/ESQU": {
+      "sistema": "SINAN",
+      "subsistema": "ESQU",
+      "nome": "Esquitossomose",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        57
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/FAMA": {
+      "sistema": "SINAN",
+      "subsistema": "FAMA",
+      "nome": "Febre Amarela",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        58
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/FMAC": {
+      "sistema": "SINAN",
+      "subsistema": "FMAC",
+      "nome": "Febre Maculosa",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        59
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/FTIF": {
+      "sistema": "SINAN",
+      "subsistema": "FTIF",
+      "nome": "Febre Tifóide",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        60
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/HANS": {
+      "sistema": "SINAN",
+      "subsistema": "HANS",
+      "nome": "Hanseníase",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        61
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/HANT": {
+      "sistema": "SINAN",
+      "subsistema": "HANT",
+      "nome": "Hantavirose",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        62
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/IEXO": {
+      "sistema": "SINAN",
+      "subsistema": "IEXO",
+      "nome": "Intoxicação exógena",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        63
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/LEIV": {
+      "sistema": "SINAN",
+      "subsistema": "LEIV",
+      "nome": "Leishmaniose Visceral",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        64
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/LEPT": {
+      "sistema": "SINAN",
+      "subsistema": "LEPT",
+      "nome": "Leptospirose",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        65
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/LTAN": {
+      "sistema": "SINAN",
+      "subsistema": "LTAN",
+      "nome": "Leishimaniose Tegumentar Americana",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        66
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/MALA": {
+      "sistema": "SINAN",
+      "subsistema": "MALA",
+      "nome": "Malária",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        67
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/MENI": {
+      "sistema": "SINAN",
+      "subsistema": "MENI",
+      "nome": "Meningite",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        68
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/PEST": {
+      "sistema": "SINAN",
+      "subsistema": "PEST",
+      "nome": "Peste",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        69
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/PFA": {
+      "sistema": "SINAN",
+      "subsistema": "PFA",
+      "nome": "",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        70
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/PFAN": {
+      "sistema": "SINAN",
+      "subsistema": "PFAN",
+      "nome": "Paralisia Flácida Aguda",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        71
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/RAIV": {
+      "sistema": "SINAN",
+      "subsistema": "RAIV",
+      "nome": "Raiva Humana",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        72
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/TETA": {
+      "sistema": "SINAN",
+      "subsistema": "TETA",
+      "nome": "Tetano Acidental",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        73
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/TETN": {
+      "sistema": "SINAN",
+      "subsistema": "TETN",
+      "nome": "Tetano Neonatal",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        74
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/TUBE": {
+      "sistema": "SINAN",
+      "subsistema": "TUBE",
+      "nome": "Tuberculose",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        75
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINAN/VIOL": {
+      "sistema": "SINAN",
+      "subsistema": "VIOL",
+      "nome": "Violência Interpessoal ou Autoprovocada",
+      "variantes_origem": [
+        "SINAN"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        76
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINASC/DN": {
+      "sistema": "SINASC",
+      "subsistema": "DN",
+      "nome": "Declaraçõe de Nascidos Vivos",
+      "variantes_origem": [
+        "SINASC2"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES/",
+          "linha_planilha": 126
+        }
+      ],
+      "origem_linhas": [
+        78,
+        126
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINASC/DNR": {
+      "sistema": "SINASC",
+      "subsistema": "DNR",
+      "nome": "Nascimentos por UF de residência",
+      "variantes_origem": [
+        "SINASC1"
+      ],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/ANT/DNRES/",
+          "linha_planilha": 127
+        }
+      ],
+      "origem_linhas": [
+        77,
+        127
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SINASC/DNRIG": {
+      "sistema": "SINASC",
+      "subsistema": "DNRIG",
+      "nome": "Declaraçõe de Nascidos Vivos",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/ANT/DNIGN/",
+          "linha_planilha": 125
+        }
+      ],
+      "origem_linhas": [
+        125
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": true
+    },
+    "SISAB/CT": {
+      "sistema": "SISAB",
+      "subsistema": "CT",
+      "nome": "Contatos Assistenciais",
+      "variantes_origem": [
+        "SISAB"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        79
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SISAB/PR": {
+      "sistema": "SISAB",
+      "subsistema": "PR",
+      "nome": "Procedimentos Realizados",
+      "variantes_origem": [
+        "SISAB"
+      ],
+      "diretorios": [],
+      "origem_linhas": [
+        80
+      ],
+      "situacao": "sem_diretorio_validado",
+      "homologado": false,
+      "revisao_necessaria": false
+    },
+    "SISPRENATAL/PN": {
+      "sistema": "SISPRENATAL",
+      "subsistema": "PN",
+      "nome": "Pré-Natal",
+      "variantes_origem": [],
+      "diretorios": [
+        {
+          "url": "ftp://ftp.datasus.gov.br/dissemin/publicos/SISPRENATAL/201201_/Dados/",
+          "linha_planilha": 128
+        }
+      ],
+      "origem_linhas": [
+        128
+      ],
+      "situacao": "diretorio_mapeado_na_planilha",
+      "homologado": false,
+      "revisao_necessaria": false
+    }
+  }
+}

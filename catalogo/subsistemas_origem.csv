@@ -1,0 +1,129 @@
+linha_planilha,sistema,subsistema_ou_prefixo,nome_ou_label,ftp
+1,sistema,subsistema,nome,
+2,CIH,CR,Sistema de Comunicação de Informação Hospitalar,
+3,CIH,DAD,,
+4,CIHA,CIHA,Sistema de Comunicação de Informação Hospitalar e Ambulatorial,
+5,CNES_DC,DC,Dados Complementares,
+6,CNES_EE,EE,Estabelecimento de Ensino,
+7,CNES_EF,EF,Estabelecimento Filantrópico,
+8,CNES_EP,EP,Equipes,
+9,CNES_EQ,EQ,Equipamentos,
+10,CNES_GM,GM,Gestão e Metas,
+11,CNES_HB,HB,Habilitação,
+12,CNES_IN,IN,Incentivos,
+13,CNES_LT,LT,Leitos,
+14,CNES_PF,PF,Profissional,
+15,CNES_RC,RC,Regra Contratual,
+16,CNES_SR,SR,Serviço Especializado,
+17,CNES_ST,ST,Estabelecimentos,
+18,PNI,CPNI,,
+19,PNI,DPNI,,
+20,SIA1,PA,Produção Ambulatorial,
+21,SIA2,AB,Laudo de Acompanhamento à Cirurgia Bariátrica,
+22,SIA2,ABO,Acompanhamento Pós Cirurgia Bariátrica,
+23,SIA2,ACF,Laudo de Confecção de Fístula,
+24,SIA2,AD,Laudos Diversos,
+25,SIA2,AM,Laudo de Medicamentos,
+26,SIA2,AMP,Laudo de Acompanhamento Multiprofissional,
+27,SIA2,AN,Laudo de Nefrologia,
+28,SIA2,AQ,Laudo de Quimioterapia,
+29,SIA2,AR,Laudo de Radioterapia,
+30,SIA2,ATD,Laudo de Tratamento Dialítico,
+31,SIA2,BI,Boletim Individual,
+32,SIA2,IMPBO,,
+33,SIA2,PA,Produção Ambulatorial,
+34,SIA2,PS,Psicossocial,
+35,SIA2,SAD,Atenção Domiciliar,
+36,SIH1,RD,Reduzido de AIH,
+37,SIH1,RJ,AIH rejeitada,
+38,SIH1,SP,Serviços Profissionais,
+39,SIH2,CH,,
+40,SIH2,CM,,
+41,SIH2,ER,Rejeitadas com Código de Erro,
+42,SIH2,RD,Reduzido de AIH,
+43,SIH2,RJ,AIH rejeitada,
+44,SIH2,SP,Serviços Profissionais,
+45,SIM1,DOE,Declarações de Óbitos por causas externas,
+46,SIM1,DOF,Declarações de Óbitos Fetais,
+47,SIM1,DOI,Declarações de Óbitos infantis,
+48,SIM1,DOM,Declarações de Óbitos maternos,
+49,SIM2,DO,Declarações de Óbitos,
+50,SINAN,ANIM,Animais Peçonhentos,
+51,SINAN,BOTU,Botulismo,
+52,SINAN,CHAG,Doença de Chagas,
+53,SINAN,COLE,Cólera,
+54,SINAN,COQU,Coqueluche,
+55,SINAN,DENG,Dengue e Chikungunya,
+56,SINAN,DIFT,Difteria,
+57,SINAN,ESQU,Esquitossomose,
+58,SINAN,FAMA,Febre Amarela,
+59,SINAN,FMAC,Febre Maculosa,
+60,SINAN,FTIF,Febre Tifóide,
+61,SINAN,HANS,Hanseníase,
+62,SINAN,HANT,Hantavirose,
+63,SINAN,IEXO,Intoxicação exógena,
+64,SINAN,LEIV,Leishmaniose Visceral,
+65,SINAN,LEPT,Leptospirose,
+66,SINAN,LTAN,Leishimaniose Tegumentar Americana,
+67,SINAN,MALA,Malária,
+68,SINAN,MENI,Meningite,
+69,SINAN,PEST,Peste,
+70,SINAN,PFA,,
+71,SINAN,PFAN,Paralisia Flácida Aguda,
+72,SINAN,RAIV,Raiva Humana,
+73,SINAN,TETA,Tetano Acidental,
+74,SINAN,TETN,Tetano Neonatal,
+75,SINAN,TUBE,Tuberculose,
+76,SINAN,VIOL,Violência Interpessoal ou Autoprovocada,
+77,SINASC1,DNR,Nascimentos por UF de residência,
+78,SINASC2,DN,Declaraçõe de Nascidos Vivos,
+79,SISAB,CT,Contatos Assistenciais,
+80,SISAB,PR,Procedimentos Realizados,
+81,,,,
+82,,,,
+83,sistema,prefixo,label,FTP
+84,CIH,CR,Sistema de Comunicação de Informação Hospitalar,ftp://ftp.datasus.gov.br/dissemin/publicos/CIH/200801_201012/Dados/
+85,CIHA,CI,Sistema de Comunicação de Informação Hospitalar e Ambulatorial,ftp://ftp.datasus.gov.br/dissemin/publicos/CIHA/201101_/Dados/
+86,CNES,DC,Dados Complementares ,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/DC
+87,CNES,EE,Estabelecimento de Ensino,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EE
+88,CNES,EF,Estabelecimento Filantrópico,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EF
+89,CNES,EP,Equipes,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EP
+90,CNES,EQ,Equipamentos,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/EQ
+91,CNES,GM,Gestão e Metas,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/GM
+92,CNES,HB,Habilitação,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/HB
+93,CNES,IN,Incentivos,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/IN
+94,CNES,LT,Leitos,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/LT
+95,CNES,PF,Profissional,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/PF
+96,CNES,RC,Regra Contratual,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/RC
+97,CNES,SR,Serviço Especializado,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/SR
+98,CNES,ST,Estabelecimentos,ftp://ftp.datasus.gov.br/dissemin/publicos/CNES/200508_/Dados/ST
+99,SIA,ABO,Acompanhamento Pós Cirurgia Bariátrica,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+100,SIA,AB,Laudo de Acompanhamento a Cirurgia Bariátrica,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+101,SIA,ACF,Confeção de Fístula Arteriovenosa,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+102,SIA,AD,Laudos Diversos,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+103,SIA,AM,Laudo de Medicamentos,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+104,SIA,AN,Laudo de Nefrologia,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+105,SIA,AQ,Laudo de Quimioterapia,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+106,SIA,AR,Laudo de Radioterapia,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+107,SIA,ATD,Tratamento Dialítico,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+108,SIA,BI,Boletim Individual,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+109,SIA,PA,Produções ambulatoriais 1994-1999,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/199407_200712/Dados/
+110,SIA,PA,Produção Ambulatorial,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+111,SIA,PS,Psicossocial,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+112,SIA,SAD,Atenção Domiciliar,ftp://ftp.datasus.gov.br/dissemin/publicos/SIASUS/200801_/Dados/
+113,SIH,ER,Rejeitadas com Código de Erro,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/
+114,SIH,RD,Reduzido de AIH,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/
+115,SIH,RD,Reduzido de AIH,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/
+116,SIH,RJ,AIH rejeitada,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/
+117,SIH,RJ,AIH rejeitada,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/
+118,SIH,SP,Serviços Profissionais,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/199201_200712/Dados/
+119,SIH,SP,Serviços Profissionais,ftp://ftp.datasus.gov.br/dissemin/publicos/SIHSUS/200801_/Dados/
+120,SIM,DO,Declarações de Óbitos,ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DORES/
+121,SIM,DOEXT,Declarações de Óbitos por causas externas,ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/
+122,SIM,DOFET,Declarações de Óbitos Fetais ,ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/
+123,SIM,DOINF,Declarações de Óbitos infantis,ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/
+124,SIM,DOMAT,Declarações de Óbitos maternos,ftp://ftp.datasus.gov.br/dissemin/publicos/SIM/CID10/DOFET/
+125,SINASC,DNRIG,Declaraçõe de Nascidos Vivos,ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/ANT/DNIGN/
+126,SINASC,DN,Declaraçõe de Nascidos Vivos,ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/NOV/DNRES/
+127,SINASC,DNR,Dados dos nascimentos por UF de residência,ftp://ftp.datasus.gov.br/dissemin/publicos/SINASC/ANT/DNRES/
+128,SISPRENATAL,PN,Pré-Natal,ftp://ftp.datasus.gov.br/dissemin/publicos/SISPRENATAL/201201_/Dados/

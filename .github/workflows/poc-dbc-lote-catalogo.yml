@@ -1,0 +1,64 @@
+name: PoC DBC - catalogo e lote
+on:
+  workflow_dispatch:
+    inputs:
+      fonte:
+        description: 'Fonte do catalogo (ex.: SIA/PA, SIH/RD, CNES/ST)'
+        required: true
+        type: string
+        default: SIA/PA
+      competencia:
+        description: 'AAAA = ano inteiro; AAAA-MM = mes especifico'
+        required: true
+        type: string
+        default: '2009-04'
+      executar:
+        description: 'Executar somente fonte compativel com robo original (max. 27 UFs/mes)'
+        required: true
+        type: boolean
+        default: false
+      max_arquivos:
+        description: 'Limite de arquivos descobertos (0 = sem limite na descoberta)'
+        required: true
+        type: string
+        default: '0'
+permissions:
+  contents: read
+concurrency:
+  group: poc-dbc-lote-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  lote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependencias originais
+        if: ${{ inputs.executar }}
+        run: |
+          if [ -f poc_dbc_online/requirements.txt ]; then pip install -r poc_dbc_online/requirements.txt; fi
+      - name: Validar scripts
+        run: python -m unittest discover -s tests -p test_lote_dbc.py -v
+      - name: Descobrir e opcionalmente extrair
+        env:
+          FONTE: ${{ inputs.fonte }}
+          COMPETENCIA: ${{ inputs.competencia }}
+          EXECUTAR: ${{ inputs.executar }}
+          MAX_ARQUIVOS: ${{ inputs.max_arquivos }}
+        run: |
+          set -euo pipefail
+          args=(--fonte "$FONTE" --competencia "$COMPETENCIA" --max-arquivos "$MAX_ARQUIVOS")
+          if [ "$EXECUTAR" = true ]; then args+=(--executar); fi
+          python scripts/lote_dbc.py "${args[@]}"
+      - name: Artefatos de descoberta e saidas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalogo-plano-e-saidas-${{ github.run_id }}
+          path: |
+            poc_dbc_online/saidas/
+          if-no-files-found: warn
+          retention-days: 7
