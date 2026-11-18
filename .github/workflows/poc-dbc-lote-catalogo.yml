@@ -3,25 +3,53 @@ on:
   workflow_dispatch:
     inputs:
       fonte:
-        description: 'Fonte do catalogo (ex.: SIA/PA, SIH/RD, CNES/ST)'
+        description: 'Sistema / Subsistema (selecione uma fonte mapeada)'
         required: true
-        type: string
+        type: choice
         default: SIA/PA
+        options:
+        # INICIO-FONTES-GERADAS
+          - CIH/CR
+          - CIHA/CI
+          - CNES/DC
+          - CNES/EE
+          - CNES/EF
+          - CNES/EP
+          - CNES/EQ
+          - CNES/GM
+          - CNES/HB
+          - CNES/IN
+          - CNES/LT
+          - CNES/PF
+          - CNES/RC
+          - CNES/SR
+          - CNES/ST
+          - SIA/AB
+          - SIA/ABO
+          - SIA/ACF
+          - SIA/AD
+          - SIA/AM
+          - SIA/AN
+          - SIA/AQ
+          - SIA/AR
+          - SIA/ATD
+          - SIA/BI
+          - SIA/PA
+          - SIA/PS
+          - SIA/SAD
+          - SIH/ER
+          - SIH/RD
+          - SIH/RJ
+          - SIH/SP
+          - SINASC/DN
+          - SINASC/DNR
+          - SISPRENATAL/PN
+        # FIM-FONTES-GERADAS
       competencia:
-        description: 'AAAA = ano inteiro; AAAA-MM = mes especifico'
+        description: 'Ano completo: 2010 | Um mes: 2010-04'
         required: true
         type: string
-        default: '2009-04'
-      executar:
-        description: 'Executar somente fonte compativel com robo original (max. 27 UFs/mes)'
-        required: true
-        type: boolean
-        default: false
-      max_arquivos:
-        description: 'Limite de arquivos descobertos (0 = sem limite na descoberta)'
-        required: true
-        type: string
-        default: '0'
+        default: '2010'
 permissions:
   contents: read
 concurrency:
@@ -30,35 +58,28 @@ concurrency:
 jobs:
   lote:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Instalar dependencias originais
-        if: ${{ inputs.executar }}
+      - name: Conferir catalogo e formulario
         run: |
-          if [ -f poc_dbc_online/requirements.txt ]; then pip install -r poc_dbc_online/requirements.txt; fi
-      - name: Validar scripts
-        run: python -m unittest discover -s tests -p test_lote_dbc.py -v
-      - name: Descobrir e opcionalmente extrair
+          python scripts/gerar_opcoes_workflow.py --check
+          python -m unittest discover -s tests -p test_lote_dbc.py -v
+      - name: Consultar arquivos do DATASUS (somente descoberta)
         env:
           FONTE: ${{ inputs.fonte }}
           COMPETENCIA: ${{ inputs.competencia }}
-          EXECUTAR: ${{ inputs.executar }}
-          MAX_ARQUIVOS: ${{ inputs.max_arquivos }}
         run: |
           set -euo pipefail
-          args=(--fonte "$FONTE" --competencia "$COMPETENCIA" --max-arquivos "$MAX_ARQUIVOS")
-          if [ "$EXECUTAR" = true ]; then args+=(--executar); fi
-          python scripts/lote_dbc.py "${args[@]}"
-      - name: Artefatos de descoberta e saidas
+          python scripts/lote_dbc.py --fonte "$FONTE" --competencia "$COMPETENCIA"
+      - name: Salvar plano de descoberta
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: catalogo-plano-e-saidas-${{ github.run_id }}
-          path: |
-            poc_dbc_online/saidas/
+          name: plano-datasus-${{ github.run_id }}
+          path: poc_dbc_online/saidas/plano_lote.json
           if-no-files-found: warn
           retention-days: 7
