@@ -25,7 +25,7 @@ concurrency:
 jobs:
   intervalo:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 60
 
     env:
       INICIO: ${{ inputs.inicio }}
@@ -103,6 +103,11 @@ jobs:
         if: ${{ steps.localizar.outputs.encontrado == 'true' }}
         run: |
           python scripts/restaurar_execucoes.py             "$INICIO" "$FIM"
+
+      - name: Preservar referencia historica
+        if: ${{ steps.localizar.outputs.encontrado == 'true' }}
+        run: |
+          python scripts/preservar_referencia.py "$INICIO" "$FIM"
 
       - name: Inicializar formulario DATASUS
         id: inicializar
@@ -194,8 +199,14 @@ jobs:
           python scripts/intervalo_github.py \
             empacotar "$INICIO" "$FIM" "$LIMITE"
 
+      - name: Comparar nova extracao com referencia
+        id: comparar
+        if: ${{ steps.localizar.outputs.encontrado == 'true' && steps.organizar.outcome == 'success' }}
+        run: |
+          python scripts/comparar_intervalo.py "$INICIO" "$FIM"
+
       - name: Disponibilizar resultados aprovados
-        if: ${{ always() && steps.organizar.outputs.has_files == 'true' }}
+        if: ${{ always() && steps.organizar.outcome == 'success' && (steps.comparar.outcome == 'success' || steps.comparar.outcome == 'skipped') }}
         uses: actions/upload-artifact@v6
         with:
           name: resultado-sia-am-${{ inputs.inicio }}-a-${{ inputs.fim }}-${{ github.run_number }}
