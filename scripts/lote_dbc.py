@@ -71,7 +71,7 @@ def arquivos_ftp(url, timeout=25):
         return [s.rsplit('/', 1)[-1] for s in ftp.nlst()]
     finally:
         try: ftp.quit()
-        except (OSError, EOFError, ftplib.all_errors):
+        except (OSError, EOFError, ftplib.Error):
             ftp.close()
 
 
@@ -91,7 +91,13 @@ def descobrir(registro, codigo, comp, listar=arquivos_ftp):
     achados = []
     for url in urls_para_competencia(registro, comp):
         nomes = listar(url)
-        for uf, nome in filtrar_arquivos(nomes, registro['subsistema'], comp):
+        correspondentes = filtrar_arquivos(nomes, registro['subsistema'], comp)
+        print(f"[FTP] {codigo} {comp}: {len(nomes)} nomes listados; "
+              f"{len(correspondentes)} arquivos correspondentes; diretorio={url}", flush=True)
+        if not correspondentes:
+            amostra = ', '.join(sorted(nomes)[:5]) if nomes else '(listagem vazia)'
+            print(f"[FTP] Amostra da listagem: {amostra}", flush=True)
+        for uf, nome in correspondentes:
             achados.append(dict(fonte=codigo, competencia=comp, uf=uf, arquivo=nome, url_diretorio=url))
     chave = lambda d: (d['competencia'], d['uf'], d['arquivo'], d['url_diretorio'])
     return sorted({tuple(sorted(a.items())):a for a in achados}.values(), key=chave)
@@ -149,6 +155,8 @@ def main(argv=None):
         catalogo=json.loads(args.catalogo.read_text(encoding='utf-8'))
         reg=fonte(catalogo,args.fonte)
         comps=competencias(args.competencia)
+        print(f"[PARAMETROS] fonte={args.fonte} competencia={args.competencia} "
+              f"modo={'executar' if args.executar else 'planejar'}", flush=True)
         plano=[]
         for c in comps:
             plano.extend(descobrir(reg,args.fonte,c))
@@ -168,7 +176,7 @@ def main(argv=None):
                 cmd=[sys.executable,str(args.robo),'--sistema',reg['sistema'],'--subsistema',reg['subsistema'],'--uf',uf,'--competencia',comp]
                 print(f'[{i}/{len(grupos_execucao)}] {args.fonte} {uf} {comp}',flush=True)
                 subprocess.run(cmd,check=True)
-    except (ValueError,OSError,ftplib.all_errors,subprocess.CalledProcessError) as exc:
+    except (ValueError, OSError, EOFError, ftplib.Error, subprocess.CalledProcessError) as exc:
         p.exit(2,f'ERRO: {exc}\n')
     return 0
 
